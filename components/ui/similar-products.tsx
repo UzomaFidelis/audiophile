@@ -1,6 +1,9 @@
+"use client";
+
 import { Product } from "@/lib/data";
 import SimilarProductItem from "./similar-product-item";
 import clsx from "clsx";
+import { useState, useEffect } from "react";
 import { getSimilarProducts } from "@/lib/util-functions";
 
 const SimilarProductsCollection = ({
@@ -10,7 +13,11 @@ const SimilarProductsCollection = ({
   product: Product;
   className?: string;
 }) => {
-  const similarProducts = getSimilarProducts(product);
+  const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    setSimilarProducts(getSimilarProducts(product));
+  }, [product]);
 
   return (
     <div className={clsx(className, "text-center")}>
@@ -24,7 +31,7 @@ const SimilarProductsCollection = ({
       </h2>
       <div
         className={clsx(
-          "w-full centered-flex-col gap-[1.4rem]",
+          "w-full flex flex-col items-start gap-[1.4rem]",
           "md:flex-row md:gap-[1.3rem]",
           "lg:gap-[1.6rem]",
         )}

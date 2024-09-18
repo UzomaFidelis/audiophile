@@ -64,7 +64,7 @@ const Cart = forwardRef<HTMLDivElement, CartProps>(
               ? "flex flex-col justify-start"
               : "centered-flex-col justify-center",
             "py-6 px-3 rounded-lg bg-white shadow-lg overflow-scroll",
-            "h-[15rem] w-[90%] max-h-[49.2rem]",
+            "h-[20rem] w-[90%]",
             "[transition:transform_400ms,opacity_200ms] ease-out",
             "md:max-w-[30rem] md:absolute md:right-10 md:top-0",
             "lg:h-[25rem]",
@@ -124,6 +124,7 @@ const Cart = forwardRef<HTMLDivElement, CartProps>(
                 alt="empty cart"
                 width={100}
                 height={100}
+                className="w-[6.25rem] h-[6.25rem]"
               />
             </>
           )}

@@ -31,7 +31,7 @@ const CartButton = ({
         aria-hidden
         className={clsx(
           "group-active:scale-75 transition-transform",
-          "absolute",
+          "absolute w-6 h-6",
         )}
       />
       {totalProducts && (

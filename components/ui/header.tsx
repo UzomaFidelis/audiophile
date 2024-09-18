@@ -12,6 +12,8 @@ import Cart from "./cart";
 import { Provider } from "react-redux";
 import { store } from "@/lib/store";
 import CartButton from "./cart-button";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -94,6 +96,7 @@ const Header = () => {
               alt="audiophile logo"
               width={145}
               height={27}
+              className="w-[9rem] h-auto"
               priority
             />
           </Link>
@@ -106,6 +109,7 @@ const Header = () => {
           <Sidebar isOpen={isSideBarOpen} ref={sideBarRef} />
         </div>
       </header>
+      <ToastContainer autoClose={2000} position="top-left" />
     </Provider>
   );
 };

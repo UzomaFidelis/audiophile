@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/ui/header";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +22,6 @@ export default function RootLayout({
       <body className="font-manrope">
         <Header />
         {children}
-        <ToastContainer autoClose={2000} position="top-left" />
       </body>
     </html>
   );
