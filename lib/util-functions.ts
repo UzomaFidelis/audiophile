@@ -6,13 +6,14 @@ export function getSimilarProducts(currentProduct: Product): Product[] {
   const sameCategoryProducts = products.filter(
     (product) =>
       currentProduct.category === product.category &&
-      currentProduct.product_id !== product.product_id &&
-      product.product_id !== "Earphones",
+      currentProduct.product_id !== product.product_id,
   );
 
   if (sameCategoryProducts.length < 3) {
     const candidateProducts = products.filter(
-      (product) => currentProduct.category !== product.category,
+      (product) =>
+        currentProduct.category !== product.category &&
+        product.category !== "Earphones",
     );
     const randomProduct = candidateProducts
       .sort(() => 0.5 - Math.random())
