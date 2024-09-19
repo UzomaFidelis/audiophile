@@ -51,7 +51,7 @@ const CheckoutProducts = () => {
           <p className={clsx("text-text uppercase font-semibold")}>
             Vat (included)
           </p>
-          <p className={clsx("font-bold")}>$ {vat}</p>
+          <p className={clsx("font-bold")}>$ {commafy(vat)}</p>
         </div>
         <div className={clsx("flex justify-between mt-5")}>
           <p className={clsx("text-text uppercase font-semibold")}>

@@ -31,7 +31,6 @@ const CategoryListItem = ({
         alt={imageAlt}
         width={140}
         height={140}
-        style={{ height: "auto", width: "8.75rem" }}
         className={clsx(
           "absolute absolute-x-center top-[-3.1rem]",
           "lg:group-hover:scale-[1.7] lg:group-hover:-translate-y-4",

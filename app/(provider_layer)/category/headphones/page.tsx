@@ -6,7 +6,7 @@ import PurposeStatement from "@/components/ui/purpose-statement";
 import Footer from "@/components/ui/footer";
 
 export const metadata: Metadata = {
-  title: "headphones",
+  title: "Headphones",
 };
 
 const HeadphonesPage = () => {

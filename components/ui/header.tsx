@@ -94,8 +94,8 @@ const Header = () => {
             <Image
               src="/images/shared/desktop/logo.svg"
               alt="audiophile logo"
-              width={145}
-              height={27}
+              width={143}
+              height={25}
               className="w-[9rem] h-auto"
               priority
             />

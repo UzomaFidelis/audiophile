@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/ui/header";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-manrope">
-        <Header />
-        {children}
-      </body>
+      <body className="font-manrope">{children}</body>
     </html>
   );
 }

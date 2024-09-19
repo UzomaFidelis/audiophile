@@ -1,32 +1,28 @@
-import { Metadata } from "next";
 import clsx from "clsx";
-import Link from "next/link";
 import { products } from "@/lib/data";
-import { notFound } from "next/navigation";
 import ProductCategories from "@/components/ui/categories";
 import PurposeStatement from "@/components/ui/purpose-statement";
 import Footer from "@/components/ui/footer";
 import ProductDetail from "@/components/ui/product-detail";
 import BackButton from "@/components/ui/back-button";
+import { getCurrentProduct } from "@/lib/util-functions";
 
-export const metadata: Metadata = {
-  title: "Product Details Page",
-};
+export async function generateStaticParams() {
+  return products.map((product) => ({
+    id: product.product_id,
+  }));
+}
 
-// export async function generateStaticParams() {
-//   return products.map((product) => ({
-//     id: product.product_id,
-//   }));
-// }
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  let currentProduct = await getCurrentProduct(params.id);
 
-const ProductPage = ({ params }: { params: { id: string } }) => {
-  const currentProduct = products.find(
-    (product) => product.product_id === params.id,
-  );
+  return {
+    title: currentProduct.name.toUpperCase(),
+  };
+}
 
-  if (!currentProduct) {
-    notFound();
-  }
+const ProductPage = async ({ params }: { params: { id: string } }) => {
+  const currentProduct = await getCurrentProduct(params.id);
 
   return (
     <>
