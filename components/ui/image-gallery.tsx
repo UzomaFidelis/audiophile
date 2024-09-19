@@ -23,7 +23,7 @@ const ImageGallery = ({
       <div
         className={clsx(
           "relative w-full h-[10.93rem] rounded-lg overflow-hidden",
-          "md:h-auto",
+          "md:h-auto bg-lightGray/30",
         )}
       >
         <Image
@@ -51,7 +51,7 @@ const ImageGallery = ({
       <div
         className={clsx(
           "relative w-full h-[11rem] rounded-lg overflow-hidden",
-          "md:h-auto",
+          "md:h-auto bg-lightGray/30",
         )}
       >
         <Image
@@ -80,6 +80,7 @@ const ImageGallery = ({
         className={clsx(
           "relative w-full h-[22.9rem] rounded-lg overflow-hidden",
           "md:h-auto md:col-start-2 md:row-start-1 md:row-span-2",
+          "bg-lightGray/30",
         )}
       >
         <Image

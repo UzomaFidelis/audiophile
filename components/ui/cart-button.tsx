@@ -37,8 +37,9 @@ const CartButton = ({
       {totalProducts && (
         <span
           className={clsx(
-            "absolute top-[-0.3rem] right-[-0.3rem] rounded-full bg-accentMain w-7 h-7 text-white",
-            "text-sm flex justify-center items-center",
+            "absolute top-[-0.3rem] right-[-0.3rem] rounded-full bg-accentMain w-5 h-5 text-white",
+            "text-xs flex justify-center items-center leading-0",
+            "lg:w-7 lg:h-7 lg:text-sm",
           )}
         >
           {totalProducts}

@@ -24,7 +24,7 @@ const CheckoutProducts = () => {
         {productsInCart.map((product, idx) => (
           <div key={idx} className={clsx("flex items-center gap-5")}>
             <Image
-              src={product.sharedImage.desktop}
+              src={product.cartImage}
               alt={product.name}
               width={50}
               height={50}

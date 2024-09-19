@@ -6,7 +6,8 @@ export function getSimilarProducts(currentProduct: Product): Product[] {
   const sameCategoryProducts = products.filter(
     (product) =>
       currentProduct.category === product.category &&
-      currentProduct.product_id !== product.product_id,
+      currentProduct.product_id !== product.product_id &&
+      product.product_id !== "Earphones",
   );
 
   if (sameCategoryProducts.length < 3) {

@@ -17,7 +17,8 @@ const SpeakersPage = () => {
           className={clsx(
             "bg-black text-white uppercase p-8 text-3xl text-center font-bold",
             "tracking-wide w-full",
-            "md:pt-28 md:pb-24 md:text-[2.5rem] md:tracking-wider",
+            "md:p-12 md:text-[2.3rem] md:tracking-wide",
+            "lg:pt-28 lg:pb-24 lg:text-[2.5rem] lg:tracking-wider",
           )}
         >
           Speakers

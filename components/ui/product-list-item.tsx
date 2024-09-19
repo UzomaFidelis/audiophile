@@ -33,7 +33,7 @@ const ProductListItem = ({
       <div
         className={clsx(
           "relative w-full h-[22rem] rounded-md overflow-hidden",
-          "md:h-[48.5rem]",
+          "md:h-[30rem]",
           "lg:h-full lg:shrink-0 lg:basis-[29rem]",
         )}
       >
