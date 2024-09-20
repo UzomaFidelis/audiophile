@@ -2,6 +2,8 @@
 
 import Header from "@/components/ui/header";
 import ProgressBarProvider from "@/components/providers/progress-bar";
+import { Provider } from "react-redux";
+import { store } from "@/lib/store";
 
 export default function ProviderLayout({
   children,
@@ -10,8 +12,10 @@ export default function ProviderLayout({
 }) {
   return (
     <ProgressBarProvider>
-      <Header />
-      {children}
+      <Provider store={store}>
+        <Header />
+        {children}
+      </Provider>
     </ProgressBarProvider>
   );
 }

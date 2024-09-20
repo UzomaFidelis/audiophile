@@ -63,7 +63,15 @@ const CheckoutForm = () => {
   const countries: string[] = country.names().sort();
   const selectedPaymentMethod = watch("paymentMethod");
 
-  async function onSubmit(_data: FormData) {
+  useEffect(() => {
+    if (selectedPaymentMethod) {
+      setPaymentMethod(selectedPaymentMethod);
+    }
+  }, [selectedPaymentMethod]);
+  // console.log("Selected Payment Method", selectedPaymentMethod);
+
+  async function onSubmit(data: FormData) {
+    console.log("SUCCESS: ", data);
     startTransition(
       () =>
         new Promise((resolve) => {
@@ -85,9 +93,7 @@ const CheckoutForm = () => {
         >
           <div
             className={clsx(
-              "min-h-[76.9rem]",
-              "md:min-h-[58.3rem]",
-              "lg:bg-white lg:rounded-lg lg:p-6 lg:min-h-[63.3rem]",
+              "lg:bg-white lg:rounded-lg lg:p-6 min-h-[89.5rem]",
               "lg:flex-1",
             )}
           >
@@ -110,17 +116,11 @@ const CheckoutForm = () => {
                   control={control}
                   render={({ field }) => (
                     <FormItem>
-                      <div
-                        className={clsx("flex justify-between items-center")}
-                      >
-                        <FormLabel className={clsx("font-bold")}>
-                          Name
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
+                      <FormLabel className={clsx("font-bold")}>Name</FormLabel>
                       <FormControl>
                         <Input {...field} placeholder="Alexei Ward" />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -129,17 +129,13 @@ const CheckoutForm = () => {
                   control={control}
                   render={({ field }) => (
                     <FormItem>
-                      <div
-                        className={clsx("flex justify-between items-center")}
-                      >
-                        <FormLabel className={clsx("font-bold")}>
-                          Email Address
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
+                      <FormLabel className={clsx("font-bold")}>
+                        Email Address
+                      </FormLabel>
                       <FormControl>
                         <Input {...field} placeholder="alexei@email.com" />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -148,17 +144,13 @@ const CheckoutForm = () => {
                   control={control}
                   render={({ field }) => (
                     <FormItem>
-                      <div
-                        className={clsx("flex justify-between items-center")}
-                      >
-                        <FormLabel className={clsx("font-bold")}>
-                          Phone Number
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
+                      <FormLabel className={clsx("font-bold")}>
+                        Phone Number
+                      </FormLabel>
                       <FormControl>
                         <Input {...field} placeholder="+1 202-555-0136" />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -183,17 +175,13 @@ const CheckoutForm = () => {
                   control={control}
                   render={({ field }) => (
                     <FormItem className="md:col-span-2">
-                      <div
-                        className={clsx("flex justify-between items-center")}
-                      >
-                        <FormLabel className={clsx("font-bold")}>
-                          Address
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
+                      <FormLabel className={clsx("font-bold")}>
+                        Address
+                      </FormLabel>
                       <FormControl>
                         <Input {...field} placeholder="1137 Williams Avenue" />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -202,17 +190,13 @@ const CheckoutForm = () => {
                   control={control}
                   render={({ field }) => (
                     <FormItem>
-                      <div
-                        className={clsx("flex justify-between items-center")}
-                      >
-                        <FormLabel className={clsx("font-bold")}>
-                          Zip Code
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
+                      <FormLabel className={clsx("font-bold")}>
+                        Zip Code
+                      </FormLabel>
                       <FormControl>
                         <Input {...field} placeholder="10001" />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -221,17 +205,11 @@ const CheckoutForm = () => {
                   control={control}
                   render={({ field }) => (
                     <FormItem>
-                      <div
-                        className={clsx("flex justify-between items-center")}
-                      >
-                        <FormLabel className={clsx("font-bold")}>
-                          City
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
+                      <FormLabel className={clsx("font-bold")}>City</FormLabel>
                       <FormControl>
                         <Input {...field} placeholder="New York" />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -240,14 +218,9 @@ const CheckoutForm = () => {
                   control={control}
                   render={({ field }) => (
                     <FormItem>
-                      <div
-                        className={clsx("flex justify-between items-center")}
-                      >
-                        <FormLabel className={clsx("font-bold")}>
-                          Country
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
+                      <FormLabel className={clsx("font-bold")}>
+                        Country
+                      </FormLabel>
                       <FormControl>
                         <Select
                           value={field.value}
@@ -265,6 +238,7 @@ const CheckoutForm = () => {
                           </SelectContent>
                         </Select>
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -295,10 +269,7 @@ const CheckoutForm = () => {
                       <FormControl>
                         <RadioGroup
                           defaultValue={field.value}
-                          onValueChange={(val) => {
-                            field.onChange(val);
-                            setPaymentMethod(val);
-                          }}
+                          onValueChange={field.onChange}
                         >
                           <FormItem>
                             <FormLabel
@@ -345,17 +316,13 @@ const CheckoutForm = () => {
                     control={control}
                     render={({ field }) => (
                       <FormItem>
-                        <div
-                          className={clsx("flex justify-between items-center")}
-                        >
-                          <FormLabel className={clsx("font-bold")}>
-                            e-Money Number
-                          </FormLabel>
-                          <FormMessage />
-                        </div>
+                        <FormLabel className={clsx("font-bold")}>
+                          e-Money Number
+                        </FormLabel>
                         <FormControl>
                           <Input {...field} placeholder="238531993" />
                         </FormControl>
+                        <FormMessage />
                       </FormItem>
                     )}
                   />
@@ -364,17 +331,13 @@ const CheckoutForm = () => {
                     control={control}
                     render={({ field }) => (
                       <FormItem>
-                        <div
-                          className={clsx("flex justify-between items-center")}
-                        >
-                          <FormLabel className={clsx("font-bold")}>
-                            e-Money PIN
-                          </FormLabel>
-                          <FormMessage />
-                        </div>
+                        <FormLabel className={clsx("font-bold")}>
+                          e-Money PIN
+                        </FormLabel>
                         <FormControl>
                           <Input {...field} placeholder="8891" />
                         </FormControl>
+                        <FormMessage />
                       </FormItem>
                     )}
                   />
@@ -408,7 +371,7 @@ const CheckoutForm = () => {
           />
         </form>
       </Form>
-      {productsInCart.length > 0 && isSubmitSuccess && (
+      {productsInCart.length && isSubmitSuccess && (
         <CheckoutSuccessModal
           firstProduct={productsInCart[0]}
           productsNumber={productsInCart.length}

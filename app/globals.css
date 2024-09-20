@@ -29,6 +29,11 @@
   --chart-5: 27 87% 67%;
   --radius: 0.5rem;
 }
+:root {
+  /*react toastify style override */
+  --toastify-color-success: #d87d4a !important;
+  --toastify-color-info: #555 !important;
+}
 .dark {
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;

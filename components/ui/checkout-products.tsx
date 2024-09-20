@@ -2,15 +2,30 @@ import Image from "next/image";
 import clsx from "clsx";
 import { Button } from "./button";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { selectProducts, selectTotalPrice } from "@/lib/slices/cartSlice";
+import {
+  CartProduct,
+  selectProducts,
+  selectTotalPrice,
+} from "@/lib/slices/cartSlice";
 import { commafy } from "@/lib/util-functions";
+import PuffLoader from "react-spinners/PuffLoader";
 
-const CheckoutProducts = () => {
+const CheckoutProducts = ({
+  products,
+  total,
+  shipping,
+  vat,
+  grandTotal,
+  submitting,
+}: {
+  products: CartProduct[];
+  total: string;
+  shipping: string;
+  vat: string;
+  grandTotal: string;
+  submitting: boolean;
+}) => {
   const dispatch = useAppDispatch();
-  const productsInCart = useAppSelector(selectProducts);
-  const totalPrice = useAppSelector(selectTotalPrice);
-  const shippingCost = 50;
-  const vat = parseFloat((0.2 * totalPrice).toFixed(2));
 
   return (
     <div
@@ -21,7 +36,7 @@ const CheckoutProducts = () => {
     >
       <h2 className={clsx("uppercase font-bold text-lg mb-6 text")}>Summary</h2>
       <div className={clsx("flex flex-col gap-4 mb-8")}>
-        {productsInCart.map((product, idx) => (
+        {products.map((product, idx) => (
           <div key={idx} className={clsx("flex items-center gap-5")}>
             <Image
               src={product.cartImage}
@@ -41,34 +56,33 @@ const CheckoutProducts = () => {
       <div className={clsx("flex flex-col gap-3")}>
         <div className={clsx("flex justify-between")}>
           <p className={clsx("text-text uppercase font-semibold")}>Total</p>
-          <p className={clsx("font-bold")}>$ {commafy(totalPrice)}</p>
+          <p className={clsx("font-bold")}>$ {total}</p>
         </div>
         <div className={clsx("flex justify-between")}>
           <p className={clsx("text-text uppercase font-semibold")}>Shipping</p>
-          <p className={clsx("font-bold")}>$ {shippingCost}</p>
+          <p className={clsx("font-bold")}>$ {shipping}</p>
         </div>
         <div className={clsx("flex justify-between")}>
           <p className={clsx("text-text uppercase font-semibold")}>
             Vat (included)
           </p>
-          <p className={clsx("font-bold")}>$ {commafy(vat)}</p>
+          <p className={clsx("font-bold")}>$ {vat}</p>
         </div>
         <div className={clsx("flex justify-between mt-5")}>
           <p className={clsx("text-text uppercase font-semibold")}>
             Grand total
           </p>
-          <p className={clsx("font-bold text-accentMain")}>
-            $ {commafy(totalPrice + shippingCost + vat)}
-          </p>
+          <p className={clsx("font-bold text-accentMain")}>$ {grandTotal}</p>
         </div>
       </div>
       <Button
         type="submit"
         variant="accented"
         className={"w-full mt-6"}
-        disabled={productsInCart.length === 0}
+        disabled={products.length === 0}
       >
-        Continue &amp; pay
+        <PuffLoader loading={submitting} size={30} color="#fff" />
+        {!submitting && "Continue & pay"}
       </Button>
     </div>
   );

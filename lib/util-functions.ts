@@ -36,3 +36,7 @@ export const getCurrentProduct = async (id: string) => {
 export function commafy(price: number) {
   return price.toLocaleString("en-US");
 }
+
+export function capitalizeString(text: string) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
