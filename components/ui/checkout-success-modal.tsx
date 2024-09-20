@@ -8,7 +8,6 @@ import { CartProduct } from "@/lib/slices/cartSlice";
 import { commafy } from "@/lib/util-functions";
 import { useAppDispatch } from "@/lib/hooks";
 import { resetCart } from "@/lib/slices/cartSlice";
-import { useEffect } from "react";
 
 const CheckoutSuccessModal = ({
   firstProduct,
@@ -20,14 +19,6 @@ const CheckoutSuccessModal = ({
   grandTotal: string;
 }) => {
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, []);
 
   return (
     <div

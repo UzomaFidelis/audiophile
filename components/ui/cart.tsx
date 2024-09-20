@@ -89,13 +89,30 @@ const Cart = forwardRef<HTMLDivElement, CartProps>(
                         alt={product.name}
                         width={70}
                         height={70}
-                        className={clsx("rounded-md overflow-hidden")}
+                        className={clsx(
+                          "rounded-md overflow-hidden w-12 h-12",
+                          "md:w-[4.38rem] md:h-[4.38rem]",
+                        )}
                       />
                       <div className="flex-1">
-                        <p className="font-bold uppercase">
+                        <p
+                          className={clsx(
+                            "font-bold uppercase text-sm",
+                            "md:text-regular",
+                            "lg:text-base",
+                          )}
+                        >
                           {product.shortName}
                         </p>
-                        <p className="text-text">$ {commafy(product.price)}</p>
+                        <p
+                          className={clsx(
+                            "text-text text-sm",
+                            "md:text-regular",
+                            "lg:text-base",
+                          )}
+                        >
+                          $ {commafy(product.price)}
+                        </p>
                       </div>
                       <CountControlButton
                         increment={() => increase(product)}

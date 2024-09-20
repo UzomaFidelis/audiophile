@@ -33,6 +33,7 @@ import CheckoutSuccessModal from "./checkout-success-modal";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { selectProducts, selectTotalPrice } from "@/lib/slices/cartSlice";
 import { commafy } from "@/lib/util-functions";
+import { toast } from "react-toastify";
 
 const CheckoutForm = () => {
   const [paymentMethod, setPaymentMethod] = useState("e-money");
@@ -67,6 +68,7 @@ const CheckoutForm = () => {
         new Promise((resolve) => {
           setTimeout(() => {
             setIsSubmitSuccess(true);
+            toast.success("Purchase completed");
             resolve();
           }, 2000);
         }),
