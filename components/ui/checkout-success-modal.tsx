@@ -33,7 +33,7 @@ const CheckoutSuccessModal = ({
     <div
       className={clsx(
         "fixed h-screen w-screen bg-black/60 p-5",
-        "top-0 bottom-0 right-0 left-0 flex justify-center items-center",
+        "top-0 bottom-0 right-0 left-0 flex justify-center items-center z-10",
       )}
     >
       <div

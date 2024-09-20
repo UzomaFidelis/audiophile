@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import country from "country-list-js";
-import { useEffect, useTransition, useState } from "react";
+import { useTransition, useState } from "react";
 
 // Shadcn form components
 import {
@@ -29,7 +29,6 @@ import {
 import CheckoutProducts from "./checkout-products";
 import { Provider } from "react-redux";
 import { store } from "@/lib/store";
-import { toast } from "react-toastify";
 import CheckoutSuccessModal from "./checkout-success-modal";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { selectProducts, selectTotalPrice } from "@/lib/slices/cartSlice";
@@ -61,14 +60,12 @@ const CheckoutForm = () => {
   const { handleSubmit, control, watch } = form;
 
   const countries: string[] = country.names().sort();
-  const selectedPaymentMethod = watch("paymentMethod");
 
   async function onSubmit(_data: FormData) {
     startTransition(
       () =>
         new Promise((resolve) => {
           setTimeout(() => {
-            toast.success("Purchased completed!");
             setIsSubmitSuccess(true);
             resolve();
           }, 2000);
